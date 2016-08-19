@@ -1,6 +1,14 @@
-# `locations.cities()`
+# `locations.cities([opt])`
 
 This will return a `Promise` which resolves in a list of all operated cities. (_This request may take a few seconds._)
+
+With `opt`, you can override the default options, which look like this:
+
+```javascript
+{
+	key: 'uR=s7k6m=[cCS^zY86H8CNAnkC6n' // API key
+}
+```
 
 ## Response
 

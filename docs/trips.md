@@ -11,7 +11,8 @@ With `opt`, you can override the default options, which look like this:
 	children: 0,
 	bikes: 0,
 	currency: 'EUR', // EUR, GBP, CHF, CZK, DKK, HRK, HUF, NOK, PLN, SEK, BGN, RON
-	search_by: 'cities'
+	search_by: 'cities',
+	key: 'uR=s7k6m=[cCS^zY86H8CNAnkC6n' // API key
 }
 ```
 
