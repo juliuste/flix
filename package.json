@@ -1,0 +1,30 @@
+{
+	"name": "meinfernbus",
+	"description": "JavaScript client for the Flixbus/Meinfernbus API.",
+	"version": "0.1.0",
+	"keywords": [
+		"bus",
+		"flixbus",
+		"meinfernbus",
+		"germany",
+		"deutschland",
+		"api"
+	],
+	"author": "Julius Tens <mail@juliustens.de>",
+	"homepage": "https://github.com/juliuste/meinfernbus",
+	"repository": "juliuste/meinfernbus",
+	"bugs": "https://github.com/juliuste/meinfernbus/issues",
+	"main": "index.js",
+	"files": ["index.js"],
+	"dependencies": {
+		"moment-timezone": "^0.5.5",
+		"got": "^6.3.0",
+		"tiny-csv": "^3.0.0"
+	},
+	"devDependencies": {
+	},
+	"engine" : {
+		"node" : ">=6"
+	},
+	"license": "MIT"
+}
