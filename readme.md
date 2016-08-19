@@ -21,8 +21,8 @@ const mfb = require('meinfernbus')
 ```
 
 - [`trips(from, to, date, [opt])`](docs/trips.md) to get routes between locations (default: cities).
-- [`locations.cities()`](docs/locations.cities.md) to get a list of all operated cities.
-- [`locations.stations()`](docs/locations.stations.md) to get a list of all operated stations.
+- [`locations.cities([opt])`](docs/locations.cities.md) to get a list of all operated cities.
+- [`locations.stations([opt])`](docs/locations.stations.md) to get a list of all operated stations.
 
 
 ## Contributing
