@@ -1,7 +1,7 @@
 'use strict'
 
-mfb = require('./index')
-assert = require('assert')
+const mfb = require('./index')
+const assert = require('assert')
 
 const works = (text) => {console.log('works')}
 

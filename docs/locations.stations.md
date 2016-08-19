@@ -1,6 +1,6 @@
 # `locations.stations()`
 
-This will return a `Promise` which resolves in a list of all operated stations.
+This will return a `Promise` which resolves in a list of all operated stations. (_This request may take a few seconds._)
 
 ## Response
 

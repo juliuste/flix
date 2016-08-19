@@ -1,6 +1,6 @@
 # `trips(from, to, date, [opt])`
 
-`from` and `to` must be city ids like `88` (or station ids, if you change the `search_by` options.
+`from` and `to` must be city ids like `88` (or station ids, if you change the `search_by` options).
 `date` must be a `Date` object.
 
 With `opt`, you can override the default options, which look like this:

@@ -1,6 +1,6 @@
 # `locations.cities()`
 
-This will return a `Promise` which resolves in a list of all operated cities.
+This will return a `Promise` which resolves in a list of all operated cities. (_This request may take a few seconds._)
 
 ## Response
 
