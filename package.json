@@ -1,7 +1,7 @@
 {
 	"name": "meinfernbus",
 	"description": "JavaScript client for the Flixbus/Meinfernbus API.",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"keywords": [
 		"bus",
 		"flixbus",
@@ -22,6 +22,10 @@
 		"tiny-csv": "^3.0.0"
 	},
 	"devDependencies": {
+	},
+	"scripts": {
+		"test": "node test.js",
+		"prepublish": "npm test"
 	},
 	"engine" : {
 		"node" : ">=6"
