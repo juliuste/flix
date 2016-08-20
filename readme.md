@@ -24,6 +24,10 @@ const mfb = require('meinfernbus')
 - [`locations.cities([opt])`](docs/locations.cities.md) to get a list of all operated cities.
 - [`locations.stations([opt])`](docs/locations.stations.md) to get a list of all operated stations.
 
+## Similar Projects
+
+- [db-meinfernbus-cities](https://github.com/juliuste/meinfernbus/) – "Get all DB stations located in the same city as the given Meinfernbus location, and vice versa."
+- [db-hafas](https://github.com/derhuerst/db-hafas/) - "JavaScript client for the DB Hafas API."
 
 ## Contributing
 
