@@ -1,4 +1,4 @@
-# meinferbus
+# meinfernbus
 
 JavaScript client for the Flixbus/Meinfernbus API.
 
