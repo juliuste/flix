@@ -15,7 +15,7 @@
 	"repository": "juliuste/meinfernbus",
 	"bugs": "https://github.com/juliuste/meinfernbus/issues",
 	"main": "index.js",
-	"files": ["index.js", "lib/*", "docs/*"],
+	"files": ["index.js", "trips.js", "locations.js", "docs/*"],
 	"dependencies": {
 		"moment-timezone": "^0.5.5",
 		"got": "^6.3.0",
