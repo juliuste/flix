@@ -18,7 +18,7 @@
 	"files": ["index.js", "trips.js", "locations.js", "fetch.js", "docs/*"],
 	"dependencies": {
 		"moment-timezone": "^0.5.5",
-		"got": "^6.3.0",
+		"isomorphic-fetch": "^2.2.1",
 		"tiny-csv": "^3.0.0"
 	},
 	"devDependencies": {

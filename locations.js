@@ -56,16 +56,14 @@ const request = (parseFunction, opt) => {
 
 	return fetch('network.json', headers, {})
 		.then((res) => {
-			const newEtag = parseEtag(res.headers.etag)
+			if (res.statusCode === 304) return data
+			const newEtag = parseEtag(res.headers.get('Etag'))
 			if (newEtag !== etag) {
 				data = parseFunction(res.body)
 				etag = newEtag
 			}
 			return data
-		}, (res) => {
-			if (res.statusCode === 304 && data) return data
-			else throw res
-		})
+		}, err)
 }
 
 const cities = (opt) => request(parseCities, opt)
