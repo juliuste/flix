@@ -46,24 +46,25 @@ const parseCities = (body) => body.cities.map(parseCity)
 
 const request = (parseFunction, opt) => {
 	opt = Object.assign({}, defaults, opt || {})
-	if(etag&&data){
-		return got('http://api.meinfernbus.de/mobile/v1/network.json', {json: true, headers: {
-			'X-API-Authentication': opt.key,
-			'User-Agent': 'FlixBus/3.3 (iPhone; iOS 9.3.4; Scale/2.00)',
-			'If-None-Match': etag
-		}}).then(
-			(res)=>{data = res.body; etag = parseEtag(res.headers.etag); return parseFunction(res.body)},
-			(res)=>{return parseFunction(data)}
-		)
+
+	const headers = {
+		'X-API-Authentication': opt.key,
+		'User-Agent': 'FlixBus/3.3 (iPhone; iOS 9.3.4; Scale/2.00)'
 	}
-	else
-		return got('http://api.meinfernbus.de/mobile/v1/network.json', {json: true, headers: {
-			'X-API-Authentication': opt.key,
-			'User-Agent': 'FlixBus/3.3 (iPhone; iOS 9.3.4; Scale/2.00)'
-		}}).then(
-			(res) => {data = res.body; etag = parseEtag(res.headers.etag); return parseFunction(res.body)},
-			err
-		)
+	if (etag) headers['If-None-Match'] = etag
+
+	return got('http://api.meinfernbus.de/mobile/v1/network.json', {json: true, headers})
+		.then((res) => {
+			const newEtag = parseEtag(res.headers.etag)
+			if (newEtag !== etag) {
+				data = parseFunction(res.body)
+				etag = newEtag
+			}
+			return data
+		}, (res) => {
+			if (res.statusCode === 304 && data) return data
+			else throw res
+		})
 }
 
 const cities = (opt) => request(parseCities, opt)
