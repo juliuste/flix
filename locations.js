@@ -1,7 +1,8 @@
 'use strict'
 
-const got = require('got')
 const csv = require('tiny-csv')
+
+const fetch = require('./fetch')
 
 const err = (error) => {throw error}
 const m = (a) => ((a===undefined) ? null : a)
@@ -53,7 +54,7 @@ const request = (parseFunction, opt) => {
 	}
 	if (etag) headers['If-None-Match'] = etag
 
-	return got('http://api.meinfernbus.de/mobile/v1/network.json', {json: true, headers})
+	return fetch('network.json', headers, {})
 		.then((res) => {
 			const newEtag = parseEtag(res.headers.etag)
 			if (newEtag !== etag) {
