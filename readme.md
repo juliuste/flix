@@ -27,7 +27,7 @@ const mfb = require('meinfernbus')
 ## Similar Projects
 
 - [search-meinfernbus-locations](https://github.com/derhuerst/search-meinfernbus-locations/) - "Search for Flixbus/MeinFernbus cities & stations."
-- [db-meinfernbus-cities](https://github.com/juliuste/meinfernbus/) – "Get all DB stations located in the same city as the given Meinfernbus location, and vice versa."
+- [db-meinfernbus-cities](https://github.com/juliuste/db-meinfernbus-cities/) – "Get all DB stations located in the same city as the given Meinfernbus location, and vice versa."
 - [db-hafas](https://github.com/derhuerst/db-hafas/) - "JavaScript client for the DB Hafas API."
 - [db-stations](https://github.com/derhuerst/db-stations/) - "A list of DB stations."
 

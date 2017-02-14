@@ -1,7 +1,8 @@
 'use strict'
 
-const got = require('got')
 const moment = require('moment-timezone')
+
+const fetch = require('./fetch')
 
 const err = (error) => {throw error}
 
@@ -71,11 +72,11 @@ const parseTrips = (trips) => {
 
 const trips = (from, to, date, opt) => {
 	opt = Object.assign({}, defaults, opt || {})
-	return got('http://api.meinfernbus.de/mobile/v1/trip/search.json', {json: true, headers: {
+	return fetch('trip/search.json', {
 		'X-API-Authentication': opt.key,
 		'User-Agent': 'FlixBus/3.3 (iPhone; iOS 9.3.4; Scale/2.00)',
 		'X-User-Country': 'de'
-	}, query: {
+	}, {
 		from: +from,
 		to: +to,
 		departure_date: formatInputDate(date),
@@ -86,7 +87,7 @@ const trips = (from, to, date, opt) => {
 		adult: +opt.adults,
 		children: +opt.children,
 		bikes: +opt.bikes
-	}}).then((res) => {return parseTrips(res.body.trips)},err)
+	}).then((res) => {return parseTrips(res.body.trips)},err)
 }
 
 module.exports = trips
