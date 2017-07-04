@@ -7,6 +7,7 @@ JavaScript client for the Flixbus/Meinfernbus API.
 [![dependency status](https://img.shields.io/david/juliuste/meinfernbus.svg)](https://david-dm.org/juliuste/meinfernbus)
 [![dev dependency status](https://img.shields.io/david/dev/juliuste/meinfernbus.svg)](https://david-dm.org/juliuste/meinfernbus#info=devDependencies)
 [![license](https://img.shields.io/github/license/juliuste/meinfernbus.svg?style=flat)](LICENSE)
+[![chat on gitter](https://badges.gitter.im/public-transport.svg)](https://gitter.im/public-transport)
 
 ## Installation
 

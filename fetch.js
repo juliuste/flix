@@ -1,6 +1,6 @@
 'use strict'
 
-const fetch = require('isomorphic-fetch')
+const {fetch} = require('fetch-ponyfill')({Promise: require('pinkie-promise')})
 const qs = require('querystring')
 
 const endpoint = 'http://api.meinfernbus.de/mobile/v1/'
