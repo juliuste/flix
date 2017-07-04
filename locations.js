@@ -4,18 +4,14 @@ const csv = require('tiny-csv')
 
 const fetch = require('./fetch')
 
-const err = (error) => {throw error}
 const m = (a) => ((a===undefined) ? null : a)
 
 const defaults = {
-	key: 'uR=s7k6m=[cCS^zY86H8CNAnkC6n'
+	key: 'uR=s7k6m=[cCS^zY86H8CNAnkC6n',
+	caching: true
 }
 
-let etag = null
-let data = null
-
 const formatCountry = (country) => (country ? {name: m(country.name), code: m(country.alpha2_code)} : null)
-const parseEtag = (etag) => ((etag.substring(0,2)=='W/') ? etag.substring(2) : etag)
 
 const parseStation = (station) => ({
 	id: +station.id,
@@ -48,22 +44,11 @@ const parseCities = (body) => body.cities.map(parseCity)
 const request = (parseFunction, opt) => {
 	opt = Object.assign({}, defaults, opt || {})
 
-	const headers = {
+	return fetch('network.json', {
 		'X-API-Authentication': opt.key,
 		'User-Agent': 'FlixBus/3.3 (iPhone; iOS 9.3.4; Scale/2.00)'
-	}
-	if (etag) headers['If-None-Match'] = etag
-
-	return fetch('network.json', headers, {})
-		.then((res) => {
-			if (res.statusCode === 304) return data
-			const newEtag = parseEtag(res.headers.get('Etag'))
-			if (newEtag !== etag) {
-				data = parseFunction(res.body)
-				etag = newEtag
-			}
-			return data
-		}, err)
+	})
+	.then(parseFunction)
 }
 
 const cities = (opt) => request(parseCities, opt)

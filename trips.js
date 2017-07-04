@@ -4,9 +4,6 @@ const moment = require('moment-timezone')
 
 const fetch = require('./fetch')
 
-const err = (error) => {throw error}
-
-
 const formatInputDate = (date) => moment(date).tz('Europe/Berlin').format('DD.MM.YYYY')
 const formatOutputDate = (date) => moment.unix(+date.timestamp).utcOffset(date.tz)
 const formatDuration = (duration) => (+duration.hour*60)+(+duration.minutes)
@@ -72,6 +69,7 @@ const parseTrips = (trips) => {
 
 const trips = (from, to, date, opt) => {
 	opt = Object.assign({}, defaults, opt || {})
+
 	return fetch('trip/search.json', {
 		'X-API-Authentication': opt.key,
 		'User-Agent': 'FlixBus/3.3 (iPhone; iOS 9.3.4; Scale/2.00)',
@@ -87,7 +85,8 @@ const trips = (from, to, date, opt) => {
 		adult: +opt.adults,
 		children: +opt.children,
 		bikes: +opt.bikes
-	}).then((res) => {return parseTrips(res.body.trips)},err)
+	})
+	.then((data) => parseTrips(data.trips))
 }
 
 module.exports = trips

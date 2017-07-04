@@ -3,19 +3,20 @@
 const fetch = require('isomorphic-fetch')
 const qs = require('querystring')
 
+const endpoint = 'http://api.meinfernbus.de/mobile/v1/'
 
-
-const request = (route, headers, query) => {
-	headers = new Headers(headers)
+const request = (route, headers = {}, query = {}) => {
 	query = qs.stringify(query)
-	return fetch('http://api.meinfernbus.de/mobile/v1/'+ route + '?' + query, {headers})
+	return fetch(endpoint + route + '?' + query, {headers})
 	.then((res) => {
-		if (res.status === 304) return res
-		return res.json().then((parsed) => {
-			res.body = parsed
-			return res
-		})
-	}, (res) => {throw res})
+		if (!res.ok) {
+			const err = new Error(res.statusText)
+			err.statusCode = res.status
+			throw err
+		}
+
+		return res.json()
+	})
 }
 
 module.exports = request
