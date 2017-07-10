@@ -3,7 +3,7 @@
 const {fetch} = require('fetch-ponyfill')({Promise: require('pinkie-promise')})
 const qs = require('querystring')
 
-const endpoint = 'http://api.meinfernbus.de/mobile/v1/'
+const endpoint = 'https://api.meinfernbus.de/mobile/v1/'
 
 const request = (route, headers = {}, query = {}) => {
 	query = qs.stringify(query)
