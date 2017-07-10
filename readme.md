@@ -1,5 +1,7 @@
 # meinfernbus
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/juliuste/meinfernbus.svg)](https://greenkeeper.io/)
+
 JavaScript client for the Flixbus/Meinfernbus API.
 
 [![npm version](https://img.shields.io/npm/v/meinfernbus.svg)](https://www.npmjs.com/package/meinfernbus)
