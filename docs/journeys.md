@@ -3,7 +3,22 @@
 Get directions and prices for routes from A to B. Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) that will resolve with an array of `journey`s in the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format) which looks as follows.
 *Note that the results are not fully spec-compatible, as all dates are represented by JS `Date()` objects instead of ISO strings and the `schedule` is missing in legs.*
 
-`origin` and `destination` must be `region` ids like `88` (or `station` ids, if you change the `search_by` options).
+`origin` and `destination` can either be
+
+- `station` ids like `1` or `20`
+- `region` or `station` objects like `{type: 'region', id: 96} or `{type: 'station', id: 1}`
+
+```js
+const mfb = require('meinfernbus')
+
+mfb.journeys(20, 1)
+mfb.journeys(20, {id: 1, type: 'station'})
+
+mfb.journeys({id: 95, type: 'region'}, {id: 101, type: 'region'})
+```
+
+Please note that `origin` and `destination` must share the same tipe, you can't combine a `station` origin and a `region` destination or vice-versa
+
 `date` must be a `Date` object.
 
 With `opt`, you can override the default options, which look like this:
@@ -20,7 +35,7 @@ With `opt`, you can override the default options, which look like this:
 
 ## Response
 
-With `origin = 88` and `to = 96`, the returned `Promise` will resolve like this:
+With `origin = {type: 'region', id: 88}` and `destination = {type: 'region', id: 96}`, the returned `Promise` will resolve like this:
 
 ```js
 [

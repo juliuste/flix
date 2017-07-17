@@ -46,7 +46,7 @@ const isBerlin = (s) => (s.type==='station' && s.name.substr(0, 6) === 'Berlin')
 const isFrankfurt = (s) => (s.type==='station' && s.name.substr(0, 9) === 'Frankfurt')
 
 tape('meinfernbus.journeys', (t) => {
-	meinfernbus.journeys(88, 96).then((j) => {
+	meinfernbus.journeys({id: 88, type: 'region'}, {id: 96, type: 'region'}).then((j) => {
 		t.plan(15)
 		t.ok(j.length > 1, 'journeys length')
 		const journey = j[0]
