@@ -26,12 +26,12 @@
 	"dependencies": {
 		"fetch-ponyfill": "^4.1.0",
 		"lodash.fill": "^3.4.0",
-		"lodash.union": "^4.6.0",
 		"moment-timezone": "^0.5.13",
 		"pinkie-promise": "^2.0.1",
 		"tiny-csv": "^3.0.0"
 	},
 	"devDependencies": {
+		"lodash.isdate": "^4.0.1",
 		"lodash.isequal": "^4.5.0",
 		"tape": "^4.7.0"
 	},

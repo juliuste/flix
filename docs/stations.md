@@ -1,6 +1,6 @@
-# `locations.stations([opt])`
+# `stations([opt])`
 
-Get all operated stations (not including cities). Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) that will resolve in an array of `station`s in the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format). (_This request may take a few seconds._)
+Get all operated stations such as `Berlin central bus station` or `Frankfurt Hbf`. Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) that will resolve in an array of `station`s in the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format). (_This request may take a few seconds._)
 
 With `opt`, you can override the default options, which look like this:
 
@@ -16,7 +16,6 @@ With `opt`, you can override the default options, which look like this:
 [
 	{
 		type: 'station',
-		subtype: 'station',
 		id: 14698,
 		name: 'Aachen Hüls',
 		street: 'Wilmersdorfer Straße',
@@ -28,7 +27,7 @@ With `opt`, you can override the default options, which look like this:
 		},
 		slug: 'aachen-huls-wilmersdorfer-strasse',
 		aliases: [],
-		city: 243,
+		regions: [243], // region (city) ids, doesn't include multiple regions (yet)
 		connections: [
 			11548,
 			501,

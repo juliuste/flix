@@ -21,13 +21,11 @@ npm install meinfernbus
 const mfb = require('meinfernbus')
 ```
 
-This package contains data in the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format). Please note that due do naming conflicts between the original *Meinfernbus* API and the *Friendly public transport format*, there are actually two types of `station` in this client. The original API distinguishes `cities` and `stations` where `Berlin` would be a city and `Berlin central bus station` would be a `station`. *FPTF* implies that actually both **must** be stations. Thats why the module structure looks as follows:
+This package contains data in the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format). Please note that this package doesn't fully comply to the current 'stable' version of *FPTF* since it already includes the proposed `region` type.
 
-- `stations([opt])` to get a list of **all** operated stations (stations as in *FPTF*, therefore also including `cities`). Combined results from `stations.cities` and `stations.stations`.
-- [`stations.cities([opt])`](docs/stations.cities.md) to get a list of all operated cities.
-- [`stations.stations([opt])`](docs/stations.stations.md) to get a list of all operated stations (not including `cities`, as in the original *meinfernbus API*).
-
-- [`journeys(origin, destination, date, [opt])`](docs/journeys.md) to get routes between stations (default: cities).
+- `[`stations([opt])`](docs/stations.md)` to get a list of operated stations such as `Berlin central bus station` or `Frankfurt Hbf`.
+- [`regions([opt])`](docs/regions.md) to get a list of all operated regions (cities) such as `Berlin` or `Frankfurt`.
+- [`journeys(origin, destination, date, [opt])`](docs/journeys.md) to get routes between regions (cities) or stations (default: regions).
 
 ## Similar Projects
 
