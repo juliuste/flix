@@ -1,7 +1,7 @@
 # `regions([opt])`
 
 Get all operated regions (cities) such as `Berlin` or `Frankfurt`. Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/promise) that will resolve in an array of `regions`s. (_This request may take a few seconds._)
-Note that this doesn't fully comply to the the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format) yet since the `region` type is only proposed and not already included in the current 'stable' version of FPTF.
+Note that this doesn't fully comply to the the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format) yet since the `region` type is only [proposed](https://github.com/public-transport/friendly-public-transport-format/issues/7) and not already included in the current 'stable' version of FPTF.
 
 With `opt`, you can override the default options, which look like this:
 

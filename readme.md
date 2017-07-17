@@ -21,7 +21,7 @@ npm install meinfernbus
 const mfb = require('meinfernbus')
 ```
 
-This package contains data in the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format). Please note that this package doesn't fully comply to the current 'stable' version of *FPTF* since it already includes the proposed `region` type.
+This package contains data in the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format). Please note that this package doesn't fully comply to the current 'stable' version of *FPTF* since it already includes the [proposed `region` type](https://github.com/public-transport/friendly-public-transport-format/issues/7).
 
 - [`stations([opt])`](docs/stations.md) to get a list of operated stations such as `Berlin central bus station` or `Frankfurt Hbf`.
 - [`regions([opt])`](docs/regions.md) to get a list of all operated regions (cities) such as `Berlin` or `Frankfurt`.
