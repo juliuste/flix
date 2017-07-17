@@ -23,7 +23,7 @@ const mfb = require('meinfernbus')
 
 This package contains data in the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format). Please note that this package doesn't fully comply to the current 'stable' version of *FPTF* since it already includes the proposed `region` type.
 
-- `[`stations([opt])`](docs/stations.md)` to get a list of operated stations such as `Berlin central bus station` or `Frankfurt Hbf`.
+- [`stations([opt])`](docs/stations.md) to get a list of operated stations such as `Berlin central bus station` or `Frankfurt Hbf`.
 - [`regions([opt])`](docs/regions.md) to get a list of all operated regions (cities) such as `Berlin` or `Frankfurt`.
 - [`journeys(origin, destination, date, [opt])`](docs/journeys.md) to get routes between regions (cities) or stations (default: regions).
 
