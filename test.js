@@ -9,9 +9,9 @@ tape('meinfernbus.stations', (t) => {
 	meinfernbus.stations().then((s) => {
 		t.plan(13)
 		t.ok(s.length > 30, 'stations length')
-		const berlin = s.filter((x) => x.id === 1)[0]
+		const berlin = s.filter((x) => x.id === '1')[0]
 		t.ok(berlin.type === 'station', 'stations berlin type')
-		t.ok(berlin.id === 1, 'stations berlin id')
+		t.ok(berlin.id === '1', 'stations berlin id')
 		t.ok(berlin.name === 'Berlin central bus station', 'stations berlin name')
 		t.ok(berlin.street === 'Masurenallee 4-6', 'stations berlin street')
 		t.ok(berlin.zip === '14057', 'stations berlin zip')
@@ -29,9 +29,9 @@ tape('meinfernbus.regions', (t) => {
 	meinfernbus.regions().then((r) => {
 		t.plan(10)
 		t.ok(r.length > 30, 'regions length')
-		const berlin = r.filter((x) => x.id === 88)[0]
+		const berlin = r.filter((x) => x.id === '88')[0]
 		t.ok(berlin.type === 'region', 'regions berlin type')
-		t.ok(berlin.id === 88, 'regions berlin id')
+		t.ok(berlin.id === '88', 'regions berlin id')
 		t.ok(berlin.name === 'Berlin', 'regions berlin name')
 		t.ok(berlin.coordinates && berlin.coordinates.latitude && berlin.coordinates.longitude, 'regions berlin coordinates')
 		t.ok(isEqual(berlin.country, {name: 'Germany', code: 'DE'}), 'regions berlin country')
@@ -46,7 +46,7 @@ const isBerlin = (s) => (s.type==='station' && s.name.substr(0, 6) === 'Berlin')
 const isFrankfurt = (s) => (s.type==='station' && s.name.substr(0, 9) === 'Frankfurt')
 
 tape('meinfernbus.journeys', (t) => {
-	meinfernbus.journeys({id: 88, type: 'region'}, {id: 96, type: 'region'}).then((j) => {
+	meinfernbus.journeys({id: '88', type: 'region'}, {id: '96', type: 'region'}).then((j) => {
 		t.plan(15)
 		t.ok(j.length > 1, 'journeys length')
 		const journey = j[0]
