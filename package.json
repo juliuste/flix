@@ -21,6 +21,7 @@
 	"main": "index.js",
 	"files": [
 		"index.js",
+		"index.d.ts",
 		"lib/*"
 	],
 	"dependencies": {
@@ -44,5 +45,6 @@
 	"engine": {
 		"node": ">=6"
 	},
-	"license": "MIT"
+	"license": "MIT",
+	"types": "index.d.ts"
 }
