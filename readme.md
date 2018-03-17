@@ -1,6 +1,6 @@
 # meinfernbus
 
-JavaScript client for the [Flixbus/Meinfernbus](https://www.flixbus.de/) API. Complies with the [friendly public transport format](https://github.com/public-transport/friendly-public-transport-format). Inofficial, using endpoints by *Flixbus/MFB*. Ask them for permission before using this module in production.
+JavaScript client for the [Flixbus/Meinfernbus](https://www.flixbus.de/) API. Complies with the [friendly public transport format](https://github.com/public-transport/friendly-public-transport-format). Inofficial, using endpoints by *Flixbus/MFB*. [Ask them](https://www.flixbus.com/company/partners/affiliate-partners) for permission before using this module in production.
 
 [![npm version](https://img.shields.io/npm/v/meinfernbus.svg)](https://www.npmjs.com/package/meinfernbus)
 [![Build Status](https://travis-ci.org/juliuste/meinfernbus.svg?branch=master)](https://travis-ci.org/juliuste/meinfernbus)
