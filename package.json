@@ -36,7 +36,8 @@
 	"devDependencies": {
 		"lodash.isdate": "^4.0.1",
 		"lodash.isequal": "^4.5.0",
-		"tape": "^4.9.0"
+		"tape": "^4.9.0",
+		"validate-fptf": "^1.2.2"
 	},
 	"scripts": {
 		"test": "node test.js",
