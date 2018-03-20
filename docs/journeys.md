@@ -28,7 +28,7 @@ With `opt`, you can override the default options, which look like this:
 	adults: 1,
 	children: 0,
 	bikes: 0,
-	search_by: 'regions', // 'stations'
+	searchBy: 'regions', // 'stations'
 	key: 'uR=s7k6m=[cCS^zY86H8CNAnkC6n' // API key
 }
 ```
