@@ -11,10 +11,9 @@ tape('meinfernbus.stations', (t) => {
 	meinfernbus.stations().then((s) => {
 		t.ok(s.length > 30, 'stations length')
 
-		// for(let station of s) validate(station)
+		for(let station of s) validate(station)
 
 		const berlin = s.filter((x) => x.id === '1')[0]
-		t.ok(berlin.type === 'station', 'stations berlin type')
 		t.ok(berlin.id === '1', 'stations berlin id')
 		t.ok(berlin.name === 'Berlin central bus station', 'stations berlin name')
 		t.ok(berlin.location.street === 'Masurenallee 4-6', 'stations berlin street')
@@ -33,10 +32,9 @@ tape('meinfernbus.regions', (t) => {
 	meinfernbus.regions().then((r) => {
 		t.ok(r.length > 30, 'regions length')
 
-		// for(let region of r) validate(region)
+		for(let region of r) validate(region)
 
 		const berlin = r.filter((x) => x.id === '88')[0]
-		t.ok(berlin.type === 'region', 'regions berlin type')
 		t.ok(berlin.id === '88', 'regions berlin id')
 		t.ok(berlin.name === 'Berlin', 'regions berlin name')
 		t.ok(isEqual(berlin.location.country, {name: 'Germany', code: 'DE'}), 'regions berlin country')
