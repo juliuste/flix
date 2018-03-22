@@ -53,22 +53,15 @@ const isFrankfurt = (s) => (s.type==='station' && s.name.substr(0, 9) === 'Frank
 
 tape('meinfernbus.journeys', (t) => {
 	meinfernbus.journeys({id: '88', type: 'region'}, {id: '96', type: 'region'}).then((j) => {
-		t.plan(15)
 		t.ok(j.length > 1, 'journeys length')
+
+		for(let journey of j) validate(journey)
+
 		const journey = j[0]
-		t.ok(journey.type === 'journey', 'journeys journey type')
-		t.ok(journey.id, 'journeys journey id')
-		t.ok(isBerlin(journey.origin), 'journeys journey origin')
-		t.ok(isFrankfurt(journey.destination), 'journeys journey destination')
-		t.ok(isDate(journey.departure), 'journeys journey departure')
-		t.ok(isDate(journey.arrival), 'journeys journey arrival')
 		t.ok(isBerlin(journey.legs[0].origin), 'journeys journey leg origin')
 		t.ok(isFrankfurt(journey.legs[journey.legs.length-1].destination), 'journeys journey leg destination')
-		t.ok(isDate(journey.legs[0].departure), 'journeys journey leg departure')
-		t.ok(isDate(journey.legs[0].arrival), 'journeys journey leg arrival')
-		t.ok(journey.legs[0].operator.type === 'operator', 'journeys journey leg operator type')
-		t.ok(journey.legs[0].operator.id === 'mfb', 'journeys journey leg operator id')
+		t.ok(journey.legs.every(l => l.operator.id === 'mfb'), 'journeys journey legs operator id')
 		t.ok(journey.price.currency === 'EUR', 'journey price currency')
-		t.ok(journey.price.amount > 0 || journey.price.available === false, 'journey price amount')
+		t.end()
 	})
 })
