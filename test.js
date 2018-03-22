@@ -2,9 +2,9 @@
 
 const tape = require('tape')
 const isEqual = require('lodash.isequal')
-const isDate = require('lodash.isdate')
 const validate = require('validate-fptf')
 const moment = require('moment-timezone')
+const isURL = require('is-url-superb')
 
 const meinfernbus = require('./index')
 
@@ -66,6 +66,7 @@ tape('meinfernbus.journeys bus', (t) => {
 		t.ok(journey.legs.every(l => l.mode === 'bus'), 'leg mode')
 		t.ok(journey.legs.every(l => l.operator.id === 'mfb'), 'leg operator id')
 		t.ok(journey.price.currency === 'EUR', 'price currency')
+		t.ok(isURL(journey.price.url), 'price url')
 		t.end()
 	})
 })
@@ -85,6 +86,7 @@ tape('meinfernbus.journeys train', (t) => {
 		t.ok(journey.legs.every(l => l.mode === 'train'), 'leg mode')
 		t.ok(journey.legs.every(l => l.operator.id === 'leoloco'), 'leg operator id')
 		t.ok(journey.price.currency === 'EUR', 'price currency')
+		t.ok(isURL(journey.price.url), 'price url')
 		t.end()
 	})
 })

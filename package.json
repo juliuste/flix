@@ -35,7 +35,7 @@
 		"tiny-csv": "^3.0.0"
 	},
 	"devDependencies": {
-		"lodash.isdate": "^4.0.1",
+		"is-url-superb": "^2.0.0",
 		"lodash.isequal": "^4.5.0",
 		"tape": "^4.9.0",
 		"validate-fptf": "^1.2.4"
