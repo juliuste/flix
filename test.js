@@ -8,7 +8,7 @@ const isURL = require('is-url-superb')
 
 const meinfernbus = require('./index')
 
-const when = moment.tz('Europe/Berlin').day(10).startOf('day').add('6', 'hour').toDate() // next tuesday, 06:00
+const when = moment.tz('Europe/Berlin').day(11).startOf('day').add('13', 'hour').toDate() // next thursday, 13:00
 
 tape('meinfernbus.stations', (t) => {
 	meinfernbus.stations().then((s) => {
