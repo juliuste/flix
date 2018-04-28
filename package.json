@@ -1,7 +1,7 @@
 {
-	"name": "meinfernbus",
-	"description": "JavaScript client for the Flixbus/Meinfernbus API.",
-	"version": "4.0.0",
+	"name": "flix",
+	"description": "JavaScript client for the FlixBus (Meinfernbus) / FlixTrain API.",
+	"version": "4.0.1",
 	"keywords": [
 		"bus",
 		"coach",
@@ -9,6 +9,13 @@
 		"transport",
 		"flixbus",
 		"meinfernbus",
+		"flixtrain",
+		"europe",
+		"flix",
+		"flixmobility",
+		"mobility",
+		"train",
+		"railway",
 		"germany",
 		"deutschland",
 		"api",
@@ -16,20 +23,20 @@
 		"fptf"
 	],
 	"author": "Julius Tens <mail@juliustens.eu>",
-	"homepage": "https://github.com/juliuste/meinfernbus",
-	"repository": "juliuste/meinfernbus",
-	"bugs": "https://github.com/juliuste/meinfernbus/issues",
+	"homepage": "https://github.com/juliuste/flix",
+	"repository": "juliuste/flix",
+	"bugs": "https://github.com/juliuste/flix/issues",
 	"main": "index.js",
 	"files": [
 		"index.js",
 		"lib/*"
 	],
 	"dependencies": {
-		"fetch-ponyfill": "^6.0.0",
+		"fetch-ponyfill": "^6.0.2",
 		"lodash.fill": "^3.4.0",
 		"lodash.isobject": "^3.0.2",
 		"lodash.isstring": "^4.0.1",
-		"moment-timezone": "^0.5.14",
+		"moment-timezone": "^0.5.16",
 		"pinkie-promise": "^2.0.1",
 		"slugg": "^1.2.1",
 		"tiny-csv": "^3.0.0"
@@ -38,14 +45,14 @@
 		"is-url-superb": "^2.0.0",
 		"lodash.isequal": "^4.5.0",
 		"tape": "^4.9.0",
-		"validate-fptf": "^1.2.4"
+		"validate-fptf": "^2.0.1"
 	},
 	"scripts": {
 		"test": "node test.js",
 		"prepare": "npm test"
 	},
 	"engine": {
-		"node": ">=6"
+		"node": ">=8"
 	},
 	"license": "ISC"
 }

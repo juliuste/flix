@@ -6,12 +6,12 @@ const validate = require('validate-fptf')
 const moment = require('moment-timezone')
 const isURL = require('is-url-superb')
 
-const meinfernbus = require('./index')
+const flix = require('./index')
 
 const when = moment.tz('Europe/Berlin').day(11).startOf('day').add('13', 'hour').toDate() // next thursday, 13:00
 
-tape('meinfernbus.stations', (t) => {
-	meinfernbus.stations().then((s) => {
+tape('flix.stations', (t) => {
+	flix.stations().then((s) => {
 		t.ok(s.length > 30, 'stations length')
 
 		for(let station of s) validate(station)
@@ -31,8 +31,8 @@ tape('meinfernbus.stations', (t) => {
 	})
 })
 
-tape('meinfernbus.regions', (t) => {
-	meinfernbus.regions().then((r) => {
+tape('flix.regions', (t) => {
+	flix.regions().then((r) => {
 		t.ok(r.length > 30, 'regions length')
 
 		for(let region of r) validate(region)
@@ -53,9 +53,9 @@ const isBerlin = (s) => (s.type==='station' && s.name.substr(0, 6) === 'Berlin')
 const isFrankfurt = (s) => (s.type==='station' && s.name.substr(0, 9) === 'Frankfurt')
 const isStuttgart = (s) => (s.type==='station' && s.name.substr(0, 9) === 'Stuttgart')
 
-tape('meinfernbus.journeys bus', (t) => {
+tape('flix.journeys bus', (t) => {
 	// Berlin -> Frankfurt
-	meinfernbus.journeys({id: '88', type: 'region'}, {id: '96', type: 'region'}, when).then((j) => {
+	flix.journeys({id: '88', type: 'region'}, {id: '96', type: 'region'}, when).then((j) => {
 		t.ok(j.length > 1, 'journeys length')
 
 		for(let journey of j) validate(journey)
@@ -71,9 +71,9 @@ tape('meinfernbus.journeys bus', (t) => {
 	})
 })
 
-tape('meinfernbus.journeys train', (t) => {
+tape('flix.journeys train', (t) => {
 	// Berlin -> Stuttgart
-	meinfernbus.journeys({id: '88', type: 'region'}, {id: '101', type: 'region'}, when).then((j) => {
+	flix.journeys({id: '88', type: 'region'}, {id: '101', type: 'region'}, when).then((j) => {
 		t.ok(j.length > 1, 'journeys length')
 
 		for(let journey of j) validate(journey)

@@ -8,12 +8,12 @@ Get directions and prices for routes from A to B. Returns a [Promise](https://de
 - `region` or `station` objects like `{type: 'region', id: '96'} or `{type: 'station', id: '1'}`
 
 ```js
-const mfb = require('meinfernbus')
+const flix = require('flix')
 
-mfb.journeys('20', '1')
-mfb.journeys('20', {id: '1', type: 'station'})
+flix.journeys('20', '1')
+flix.journeys('20', {id: '1', type: 'station'})
 
-mfb.journeys({id: '95', type: 'region'}, {id: '101', type: 'region'})
+flix.journeys({id: '95', type: 'region'}, {id: '101', type: 'region'})
 ```
 
 Please note that `origin` and `destination` must share the same type, you can't combine a `station` origin and a `region` destination or vice-versa.

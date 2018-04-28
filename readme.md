@@ -1,25 +1,25 @@
-# meinfernbus
+# flix
 
-JavaScript client for the [Flixbus/Meinfernbus](https://www.flixbus.de/) API. Complies with the [friendly public transport format](https://github.com/public-transport/friendly-public-transport-format). Inofficial, using endpoints by *Flixbus/MFB*. [Ask them](https://www.flixbus.com/company/partners/affiliate-partners) for permission before using this module in production.
+JavaScript client for the [FlixBus (Meinfernbus) / FlixTrain](https://www.flixbus.de/) API. Complies with the [friendly public transport format](https://github.com/public-transport/friendly-public-transport-format). Inofficial, using endpoints by *FlixMobility*. [Ask them](https://www.flixbus.com/company/partners/affiliate-partners) for permission before using this module in production.
 
-[![npm version](https://img.shields.io/npm/v/meinfernbus.svg)](https://www.npmjs.com/package/meinfernbus)
-[![Build Status](https://travis-ci.org/juliuste/meinfernbus.svg?branch=master)](https://travis-ci.org/juliuste/meinfernbus)
-[![Greenkeeper badge](https://badges.greenkeeper.io/juliuste/meinfernbus.svg)](https://greenkeeper.io/)
-[![dependency status](https://img.shields.io/david/juliuste/meinfernbus.svg)](https://david-dm.org/juliuste/meinfernbus)
-[![license](https://img.shields.io/github/license/juliuste/meinfernbus.svg?style=flat)](LICENSE)
-[![fptf version](https://fptf.badges.juliustens.eu/badge/juliuste/meinfernbus)](https://fptf.badges.juliustens.eu/link/juliuste/meinfernbus)
+[![npm version](https://img.shields.io/npm/v/flix.svg)](https://www.npmjs.com/package/flix)
+[![Build Status](https://travis-ci.org/juliuste/flix.svg?branch=master)](https://travis-ci.org/juliuste/flix)
+[![Greenkeeper badge](https://badges.greenkeeper.io/juliuste/flix.svg)](https://greenkeeper.io/)
+[![dependency status](https://img.shields.io/david/juliuste/flix.svg)](https://david-dm.org/juliuste/flix)
+[![license](https://img.shields.io/github/license/juliuste/flix.svg?style=flat)](LICENSE)
+[![fptf version](https://fptf.badges.juliustens.eu/badge/juliuste/flix)](https://fptf.badges.juliustens.eu/link/juliuste/flix)
 [![chat on gitter](https://badges.gitter.im/public-transport.svg)](https://gitter.im/public-transport)
 
 ## Installation
 
 ```shell
-npm install meinfernbus
+npm install flix
 ```
 
 ## Usage
 
 ```javascript
-const mfb = require('meinfernbus')
+const flix = require('flix')
 ```
 
 This package contains data in the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format).
@@ -30,11 +30,11 @@ This package contains data in the [*Friendly Public Transport Format*](https://g
 
 ## Similar Projects
 
-- [search-meinfernbus-locations](https://github.com/derhuerst/search-meinfernbus-locations/) - "Search for Flixbus/MeinFernbus cities & stations."
-- [db-meinfernbus-cities](https://github.com/juliuste/db-meinfernbus-cities/) – "Get all DB stations located in the same city as the given Meinfernbus location, and vice versa."
+- [search-meinfernbus-locations](https://github.com/derhuerst/search-meinfernbus-locations/) - "Search for FlixBus (Meinfernbus) / FlixTrain cities & stations."
+- [db-meinfernbus-cities](https://github.com/juliuste/db-meinfernbus-cities/) – "Get all DB stations located in the same city as the given FlixBus / FlixTrain location, and vice versa."
 - [db-hafas](https://github.com/derhuerst/db-hafas/) - "JavaScript client for the DB Hafas API."
 - [db-stations](https://github.com/derhuerst/db-stations/) - "A list of DB stations."
 
 ## Contributing
 
-If you found a bug, want to propose a feature or feel the urge to complain about your life, feel free to visit [the issues page](https://github.com/juliuste/meinfernbus/issues).
+If you found a bug, want to propose a feature or feel the urge to complain about your life, feel free to visit [the issues page](https://github.com/juliuste/flix/issues).
