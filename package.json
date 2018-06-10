@@ -36,7 +36,7 @@
 		"lodash.fill": "^3.4.0",
 		"lodash.isobject": "^3.0.2",
 		"lodash.isstring": "^4.0.1",
-		"moment-timezone": "^0.5.16",
+		"moment-timezone": "^0.5.17",
 		"pinkie-promise": "^2.0.1",
 		"slugg": "^1.2.1",
 		"tiny-csv": "^3.0.0"
@@ -44,7 +44,7 @@
 	"devDependencies": {
 		"is-url-superb": "^2.0.0",
 		"lodash.isequal": "^4.5.0",
-		"tape": "^4.9.0",
+		"tape": "^4.9.1",
 		"validate-fptf": "^2.0.1"
 	},
 	"scripts": {
