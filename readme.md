@@ -30,11 +30,11 @@ This package contains data in the [*Friendly Public Transport Format*](https://g
 
 ## Similar Projects
 
-- [search-meinfernbus-locations](https://github.com/derhuerst/search-meinfernbus-locations/) - "Search for FlixBus (Meinfernbus) / FlixTrain cities & stations."
-- [db-meinfernbus-cities](https://github.com/juliuste/db-meinfernbus-cities/) – "Get all DB stations located in the same city as the given FlixBus / FlixTrain location, and vice versa."
-- [db-hafas](https://github.com/derhuerst/db-hafas/) - "JavaScript client for the DB Hafas API."
-- [db-stations](https://github.com/derhuerst/db-stations/) - "A list of DB stations."
+- [search-flix-locations](https://github.com/derhuerst/search-flix-locations/) - Search for FlixBus (Meinfernbus) / FlixTrain cities & stations.
+- [db-flix-cities](https://github.com/juliuste/db-flix-cities/) – Get all DB stations located in the same city as the given FlixBus / FlixTrain location, and vice versa.
+- [db-hafas](https://github.com/derhuerst/db-hafas/) - JavaScript client for the DB Hafas API.
+- [db-stations](https://github.com/derhuerst/db-stations/) - A list of DB stations.
 
 ## Contributing
 
-If you found a bug, want to propose a feature or feel the urge to complain about your life, feel free to visit [the issues page](https://github.com/juliuste/flix/issues).
+If you found a bug or want to propose a feature, feel free to visit [the issues page](https://github.com/juliuste/flix/issues).
