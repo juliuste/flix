@@ -1,7 +1,7 @@
 'use strict'
 
 const tape = require('tape')
-const isEqual = require('lodash.isequal')
+const isEqual = require('lodash/isEqual')
 const validate = require('validate-fptf')
 const moment = require('moment-timezone')
 const isURL = require('is-url-superb')
