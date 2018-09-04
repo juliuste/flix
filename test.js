@@ -84,7 +84,7 @@ tape('flix.journeys train', (t) => {
 		t.ok(isBerlin(journey.legs[0].origin), 'leg origin')
 		t.ok(isStuttgart(journey.legs[journey.legs.length-1].destination), 'leg destination')
 		t.ok(journey.legs.every(l => l.mode === 'train'), 'leg mode')
-		t.ok(journey.legs.every(l => l.operator.id === 'leoloco'), 'leg operator id')
+		t.ok(journey.legs.every(l => l.operator.id === 'train'), 'leg operator id')
 		t.ok(journey.price.currency === 'EUR', 'price currency')
 		t.ok(isURL(journey.price.url), 'price url')
 		t.end()
