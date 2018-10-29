@@ -6,7 +6,7 @@ const validate = require('validate-fptf')
 const moment = require('moment-timezone')
 const isURL = require('is-url-superb')
 
-const flix = require('./index')
+const flix = require('.')
 
 const when = moment.tz('Europe/Berlin').day(11).startOf('day').add('13', 'hour').toDate() // next thursday, 13:00
 
