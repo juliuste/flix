@@ -1,35 +1,43 @@
 {
 	"name": "flix",
-	"description": "JavaScript client for the FlixBus (Meinfernbus) / FlixTrain API.",
 	"version": "4.0.1",
+	"description": "JavaScript client for the FlixBus (Meinfernbus) / FlixTrain API.",
 	"keywords": [
+		"api",
 		"bus",
+		"client",
 		"coach",
-		"travel",
-		"transport",
-		"flixbus",
-		"meinfernbus",
-		"flixtrain",
+		"deutschland",
 		"europe",
 		"flix",
+		"flixbus",
 		"flixmobility",
-		"mobility",
-		"train",
-		"railway",
+		"flixtrain",
+		"fptf",
 		"germany",
-		"deutschland",
-		"api",
-		"client",
-		"fptf"
+		"meinfernbus",
+		"mobility",
+		"railway",
+		"train",
+		"transport",
+		"travel"
 	],
-	"author": "Julius Tens <mail@juliustens.eu>",
 	"homepage": "https://github.com/juliuste/flix",
-	"repository": "juliuste/flix",
 	"bugs": "https://github.com/juliuste/flix/issues",
-	"main": "lib/index.js",
+	"repository": "juliuste/flix",
+	"license": "ISC",
+	"author": "Julius Tens <mail@juliustens.eu>",
 	"files": [
 		"lib/*"
 	],
+	"main": "lib/index.js",
+	"scripts": {
+		"check-deps": "depcheck",
+		"fix": "eslint --fix lib",
+		"lint": "eslint lib",
+		"prepublishOnly": "npm test",
+		"test": "npm run lint && npm run check-deps && node test"
+	},
 	"dependencies": {
 		"fetch-ponyfill": "^6.0.2",
 		"lodash": "^4.17.10",
@@ -39,6 +47,7 @@
 		"tiny-csv": "^3.0.0"
 	},
 	"devDependencies": {
+		"depcheck": "^0.6.11",
 		"eslint": "^5.8.0",
 		"eslint-config-standard": "^12.0.0",
 		"eslint-plugin-import": "^2.14.0",
@@ -49,13 +58,7 @@
 		"tape": "^4.9.1",
 		"validate-fptf": "^2.1.1"
 	},
-	"scripts": {
-		"lint": "eslint lib",
-		"test": "npm run lint && node test",
-		"prepublishOnly": "npm test"
-	},
-	"engine": {
+	"engines": {
 		"node": ">=8"
-	},
-	"license": "ISC"
+	}
 }
