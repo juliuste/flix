@@ -42,7 +42,7 @@
 		"fetch-ponyfill": "^6.0.2",
 		"lodash": "^4.17.10",
 		"moment-timezone": "^0.5.21",
-		"pinkie-promise": "^2.0.1",
+		"query-string": "^6.2.0",
 		"slugg": "^1.2.1",
 		"tiny-csv": "^3.0.0"
 	},
