@@ -1,6 +1,8 @@
 'use strict'
 
-const tape = require('tape')
+const tapeWithoutPromise = require('tape')
+const addPromiseSupport = require('tape-promise').default
+const tape = addPromiseSupport(tapeWithoutPromise)
 const isEqual = require('lodash/isEqual')
 const validate = require('validate-fptf')
 const moment = require('moment-timezone')
