@@ -5,7 +5,7 @@ Get directions and prices for routes from A to B. Returns a [Promise](https://de
 `origin` and `destination` can either be
 
 - `station` ids like `'1'` or `'20'`
-- `region` or `station` objects like `{type: 'region', id: '96'} or `{type: 'station', id: '1'}`
+- `region` or `station` objects like `{type: 'region', id: '96'}` or `{type: 'station', id: '1'}`
 
 ```js
 const flix = require('flix')
