@@ -3,49 +3,68 @@
 const tapeWithoutPromise = require('tape')
 const addPromiseSupport = require('tape-promise').default
 const tape = addPromiseSupport(tapeWithoutPromise)
+const getStream = require('get-stream').array
 const isEqual = require('lodash/isEqual')
-const validate = require('validate-fptf')
+const validate = require('validate-fptf')()
 const moment = require('moment-timezone')
 const isURL = require('is-url-superb')
+const fptiTests = require('fpti-tests')
 
 const flix = require('.')
+const pkg = require('./package.json')
 
 const when = moment.tz('Europe/Berlin').day(11).startOf('day').add('13', 'hour').toDate() // next thursday, 13:00
 
-tape('flix.stations', async t => {
-	const stations = await flix.stations()
-
-	t.ok(stations.length > 30, 'stations length')
-	for (let station of stations) validate(station)
-
-	const berlin = stations.filter((x) => x.id === '1')[0]
-	t.ok(berlin.id === '1', 'stations berlin id')
-	t.ok(berlin.name === 'Berlin central bus station', 'stations berlin name')
-	t.ok(berlin.location.street === 'Masurenallee 4-6', 'stations berlin street')
-	t.ok(berlin.location.zip === '14057', 'stations berlin zip')
-	t.ok(berlin.location.address === 'Masurenallee 4-6, 14057 Berlin, Germany', 'stations berlin address')
-	t.ok(isEqual(berlin.location.country, { name: 'Germany', code: 'DE' }), 'stations berlin country')
-	t.ok(berlin.aliases.length >= 0, 'stations berlin aliases')
-	t.ok(isEqual(berlin.regions, ['88']), 'stations berlin regions')
-	t.ok(berlin.connections.length > 20, 'stations berlin connections')
-	t.ok(berlin.slug === 'berlin-zob', 'stations berlin slug')
+tape('flix fpti tests', async t => {
+	await t.doesNotReject(fptiTests.packageJson(pkg), 'valid package.json')
+	t.doesNotThrow(() => fptiTests.packageExports(flix, ['stations.all', 'regions.all', 'journeys']), 'valid module exports')
+	t.doesNotThrow(() => fptiTests.stationsAllFeatures(flix.stations.all.features, []), 'valid stations.all features')
+	t.doesNotThrow(() => fptiTests.regionsAllFeatures(flix.regions.all.features, []), 'valid regions.all features')
 	t.end()
 })
 
-tape('flix.regions', async t => {
-	const regions = await flix.regions()
+tape('flix.stations.all', async t => {
+	const stations = await getStream(flix.stations.all())
 
-	t.ok(regions.length > 30, 'regions length')
-	for (let region of regions) validate(region)
+	// base-check all stations
+	t.ok(stations.length > 30, 'number of stations')
+	for (let station of stations) t.doesNotThrow(() => validate(station), 'valid fptf')
 
+	// deep-check berlin station
+	const berlin = stations.filter((x) => x.id === '1')[0]
+	t.ok(berlin.id === '1', 'berlin id')
+	t.ok(berlin.name === 'Berlin central bus station', 'berlin name')
+	t.ok(berlin.location.street === 'Masurenallee 4-6', 'berlin street')
+	t.ok(berlin.location.zip === '14057', 'berlin zip')
+	t.ok(berlin.location.address === 'Masurenallee 4-6, 14057 Berlin, Germany', 'berlin address')
+	t.ok(isEqual(berlin.location.country, { name: 'Germany', code: 'DE' }), 'berlin country')
+	t.ok(berlin.aliases.length >= 0, 'berlin aliases')
+	t.ok(isEqual(berlin.regions, ['88']), 'berlin regions')
+	t.ok(berlin.connections.length > 20, 'berlin connections')
+	t.ok(berlin.slug === 'berlin-zob', 'berlin slug')
+
+	t.end()
+})
+
+tape('flix.regions.all', async t => {
+	const regions = await getStream(flix.regions.all())
+
+	// base-check all regions
+	t.ok(regions.length > 30, 'number of regions')
+	// @todo fptf validation is disabled until a validate-fptf bug is fixed
+	//  that only allows objects in region.stations, but no ids
+	// for (let region of regions) t.doesNotThrow(() => validate(region), 'valid fptf')
+
+	// deep-check berlin region
 	const berlin = regions.filter((x) => x.id === '88')[0]
-	t.ok(berlin.id === '88', 'regions berlin id')
-	t.ok(berlin.name === 'Berlin', 'regions berlin name')
-	t.ok(isEqual(berlin.location.country, { name: 'Germany', code: 'DE' }), 'regions berlin country')
-	t.ok(berlin.class === 'A', 'regions berlin class')
-	t.ok(berlin.stations.length > 4, 'regions berlin stations')
-	t.ok(berlin.connections.length > 20, 'regions berlin connections')
-	t.ok(berlin.slug === 'berlin', 'regions berlin slug')
+	t.ok(berlin.id === '88', 'berlin id')
+	t.ok(berlin.name === 'Berlin', 'berlin name')
+	t.ok(isEqual(berlin.location.country, { name: 'Germany', code: 'DE' }), 'berlin country')
+	t.ok(berlin.class === 'A', 'berlin class')
+	t.ok(berlin.stations.length > 4, 'berlin stations')
+	t.ok(berlin.connections.length > 20, 'berlin connections')
+	t.ok(berlin.slug === 'berlin', 'berlin slug')
+
 	t.end()
 })
 
