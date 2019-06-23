@@ -5,7 +5,6 @@ JavaScript client for the [FlixBus (Meinfernbus) / FlixTrain](https://www.flixbu
 [![npm version](https://img.shields.io/npm/v/flix.svg)](https://www.npmjs.com/package/flix)
 [![Build Status](https://travis-ci.org/juliuste/flix.svg?branch=master)](https://travis-ci.org/juliuste/flix)
 [![Greenkeeper badge](https://badges.greenkeeper.io/juliuste/flix.svg)](https://greenkeeper.io/)
-[![dependency status](https://img.shields.io/david/juliuste/flix.svg)](https://david-dm.org/juliuste/flix)
 [![license](https://img.shields.io/github/license/juliuste/flix.svg?style=flat)](LICENSE)
 [![fptf version](https://fptf.badges.juliustens.eu/badge/juliuste/flix)](https://fptf.badges.juliustens.eu/link/juliuste/flix)
 [![chat on gitter](https://badges.gitter.im/public-transport.svg)](https://gitter.im/public-transport)
