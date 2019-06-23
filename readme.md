@@ -187,7 +187,7 @@ const hamburgCentral = { // FPTF station
 	id: '36'
 	// …
 }
-interrail.journeys(berlinZOB, hamburgCentral, { when: new Date('2019-06-27T05:00:00+0200'), currency: 'PLN' }).then(…)
+flix.journeys(berlinZOB, hamburgCentral, { when: new Date('2019-06-27T05:00:00+0200'), currency: 'PLN' }).then(…)
 
 // journeys between regions
 const berlin = { // FPTF region
@@ -200,7 +200,7 @@ const hamburg = { // FPTF region
 	id: '118'
 	// …
 }
-interrail.journeys(berlin, hamburg, { when: new Date('2019-06-27T05:00:00+0200'), transfers: 0 }).then(…)
+flix.journeys(berlin, hamburg, { when: new Date('2019-06-27T05:00:00+0200'), transfers: 0 }).then(…)
 ```
 
 ```js
