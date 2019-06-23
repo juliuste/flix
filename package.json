@@ -1,6 +1,6 @@
 {
 	"name": "flix",
-	"version": "4.0.3",
+	"version": "5.0.0",
 	"description": "JavaScript client for the FlixBus (Meinfernbus) / FlixTrain API.",
 	"keywords": [
 		"api",
