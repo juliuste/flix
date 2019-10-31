@@ -132,8 +132,8 @@ tape('flix.journeys train only, opt.departureAfter', async t => {
 		t.ok(+new Date(journey.legs[0].departure) >= +when, 'departure')
 	}
 
-	// journey without transfers, starting at Berlin-Lichtenberg
-	const journey = journeys.find(x => x.legs.length === 1 && x.legs[0].origin.id === '20718')
+	// journey without transfers, starting at Berlin-Zoo
+	const journey = journeys.find(x => x.legs.length === 1 && x.legs[0].origin.id === '20678')
 	t.ok(!!journey, 'journey')
 	for (const leg of journey.legs) {
 		t.ok(leg.mode === 'train', 'leg mode')
