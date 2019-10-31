@@ -30,7 +30,7 @@ tape('flix.stations.all', async t => {
 
 	// base-check all stations
 	t.ok(stations.length > 30, 'number of stations')
-	for (let station of stations) t.doesNotThrow(() => validate(station), 'valid fptf')
+	for (const station of stations) t.doesNotThrow(() => validate(station), 'valid fptf')
 
 	// deep-check berlin station
 	const berlin = stations.filter((x) => x.id === '1')[0]
@@ -76,7 +76,7 @@ tape('flix.journeys between stations', async t => {
 
 	const journeys = await flix.journeys(hamburg, hannover, { when })
 	t.ok(journeys.length >= 3, 'number of journeys')
-	for (let journey of journeys) {
+	for (const journey of journeys) {
 		t.doesNotThrow(() => validate(journey), 'valid fptf')
 		t.ok(isStationThatBeginsWith(journey.legs[0].origin, 'Hamburg'), 'origin')
 		t.ok(isStationThatBeginsWith(journey.legs[journey.legs.length - 1].destination, 'Hanover'), 'destination')
@@ -93,7 +93,7 @@ tape('flix.journeys between regions', async t => {
 
 	const journeys = await flix.journeys(hamburg, hannover, { when })
 	t.ok(journeys.length >= 3, 'number of journeys')
-	for (let journey of journeys) {
+	for (const journey of journeys) {
 		t.doesNotThrow(() => validate(journey), 'valid fptf')
 		t.ok(isStationThatBeginsWith(journey.legs[0].origin, 'Hamburg'), 'origin')
 		t.ok(isStationThatBeginsWith(journey.legs[journey.legs.length - 1].destination, 'Hanover'), 'destination')
@@ -110,9 +110,9 @@ tape('flix.journeys bus only, opt.currency', async t => {
 
 	const journeys = await flix.journeys(berlin, szczecin, { when, currency: 'PLN' })
 	t.ok(journeys.length >= 3, 'number of journeys')
-	for (let journey of journeys) {
+	for (const journey of journeys) {
 		t.doesNotThrow(() => validate(journey), 'valid fptf')
-		for (let leg of journey.legs) {
+		for (const leg of journey.legs) {
 			t.ok(leg.mode === 'bus', 'leg mode')
 			t.ok(['mfb', 'flix', 'flixpl', 'interglo'].includes(leg.operator.id), 'leg operator id')
 		}
@@ -127,7 +127,7 @@ tape('flix.journeys train only, opt.departureAfter', async t => {
 
 	const journeys = await flix.journeys(berlin, stuttgart, { departureAfter: when })
 	t.ok(journeys.length >= 3, 'number of journeys')
-	for (let journey of journeys) {
+	for (const journey of journeys) {
 		t.doesNotThrow(() => validate(journey), 'valid fptf')
 		t.ok(+new Date(journey.legs[0].departure) >= +when, 'departure')
 	}
@@ -135,7 +135,7 @@ tape('flix.journeys train only, opt.departureAfter', async t => {
 	// journey without transfers, starting at Berlin-Lichtenberg
 	const journey = journeys.find(x => x.legs.length === 1 && x.legs[0].origin.id === '20718')
 	t.ok(!!journey, 'journey')
-	for (let leg of journey.legs) {
+	for (const leg of journey.legs) {
 		t.ok(leg.mode === 'train', 'leg mode')
 		t.ok(['train'].includes(leg.operator.id), 'leg operator id')
 	}
@@ -158,7 +158,7 @@ tape('flix.journeys opt.transfers', async t => {
 
 	const journeysWithTransfer = await flix.journeys(berlin, rome, { when, transfers: 2 })
 	t.ok(journeysWithTransfer.length > 0, 'number of journeys')
-	for (let journey of journeysWithTransfer) t.doesNotThrow(() => validate(journey), 'valid fptf')
+	for (const journey of journeysWithTransfer) t.doesNotThrow(() => validate(journey), 'valid fptf')
 })
 
 tape('flix.journeys opt.interval', async t => {
@@ -167,9 +167,9 @@ tape('flix.journeys opt.interval', async t => {
 
 	const journeysWithoutInterval = await flix.journeys(berlin, strasbourg, { when, transfers: 0 })
 	t.ok(journeysWithoutInterval.length === 1, 'number of journeys')
-	for (let journey of journeysWithoutInterval) t.doesNotThrow(() => validate(journey), 'valid fptf')
+	for (const journey of journeysWithoutInterval) t.doesNotThrow(() => validate(journey), 'valid fptf')
 
 	const journeysWithInterval = await flix.journeys(berlin, strasbourg, { when, transfers: 0, interval: 3 * 24 * 60 })
 	t.ok(journeysWithInterval.length === 3, 'number of journeys')
-	for (let journey of journeysWithInterval) t.doesNotThrow(() => validate(journey), 'valid fptf')
+	for (const journey of journeysWithInterval) t.doesNotThrow(() => validate(journey), 'valid fptf')
 })
