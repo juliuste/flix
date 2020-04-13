@@ -6,14 +6,20 @@ const tape = addPromiseSupport(tapeWithoutPromise)
 const getStream = require('get-stream').array
 const isEqual = require('lodash/isEqual')
 const validate = require('validate-fptf')()
-const moment = require('moment-timezone')
+// const moment = require('moment-timezone')
 const isURL = require('is-url-superb')
 const fptiTests = require('fpti-tests')
 
 const flix = require('.')
 const pkg = require('./package.json')
 
-const when = moment.tz('Europe/Berlin').day(11).startOf('day').add('06', 'hour').toDate() // next thursday, 06:00
+// const when = moment.tz('Europe/Berlin').day(11).startOf('day').add('06', 'hour').toDate() // next thursday, 06:00
+// @todo remove hardcoded `when` (did this during corona virus lockdown)
+const when = new Date('2020-07-01T08:00+02:00')
+
+const berlin = { type: 'region', id: '88' }
+const stuttgart = { type: 'region', id: '101' }
+
 const isStationThatBeginsWith = (s, beginsWith) => (s.type === 'station' && s.name.substr(0, beginsWith.length) === beginsWith)
 
 tape('flix fpti tests', async t => {
@@ -71,11 +77,11 @@ tape('flix.regions.all', async t => {
 })
 
 tape('flix.journeys between stations', async t => {
-	const hamburg = { type: 'station', id: '36' }
+	const hamburgZOB = { type: 'station', id: '36' }
 	const hannover = '64'
 
-	const journeys = await flix.journeys(hamburg, hannover, { when })
-	t.ok(journeys.length >= 3, 'number of journeys')
+	const journeys = await flix.journeys(hamburgZOB, hannover, { when })
+	t.ok(journeys.length >= 1, 'number of journeys')
 	for (const journey of journeys) {
 		t.doesNotThrow(() => validate(journey), 'valid fptf')
 		t.ok(isStationThatBeginsWith(journey.legs[0].origin, 'Hamburg'), 'origin')
@@ -92,7 +98,7 @@ tape('flix.journeys between regions', async t => {
 	const hannover = { type: 'region', id: '146' }
 
 	const journeys = await flix.journeys(hamburg, hannover, { when })
-	t.ok(journeys.length >= 3, 'number of journeys')
+	t.ok(journeys.length >= 1, 'number of journeys')
 	for (const journey of journeys) {
 		t.doesNotThrow(() => validate(journey), 'valid fptf')
 		t.ok(isStationThatBeginsWith(journey.legs[0].origin, 'Hamburg'), 'origin')
@@ -105,7 +111,6 @@ tape('flix.journeys between regions', async t => {
 })
 
 tape('flix.journeys bus only, opt.currency', async t => {
-	const berlin = { id: '88', type: 'region' }
 	const szczecin = { id: '2125', type: 'region' }
 
 	const journeys = await flix.journeys(berlin, szczecin, { when, currency: 'PLN' })
@@ -122,18 +127,16 @@ tape('flix.journeys bus only, opt.currency', async t => {
 })
 
 tape('flix.journeys train only, opt.departureAfter', async t => {
-	const berlin = { id: '88', type: 'region' }
-	const stuttgart = { id: '101', type: 'region' }
-
 	const journeys = await flix.journeys(berlin, stuttgart, { departureAfter: when })
-	t.ok(journeys.length >= 3, 'number of journeys')
+	t.ok(journeys.length >= 1, 'number of journeys')
 	for (const journey of journeys) {
 		t.doesNotThrow(() => validate(journey), 'valid fptf')
 		t.ok(+new Date(journey.legs[0].departure) >= +when, 'departure')
 	}
 
-	// journey without transfers, starting at Berlin-Zoo
-	const journey = journeys.find(x => x.legs.length === 1 && x.legs[0].origin.id === '20678')
+	// journey without transfers, starting at Berlin Hbf
+	const berlinHbfTrain = '20688'
+	const journey = journeys.find(x => x.legs.length === 1 && x.legs[0].origin.id === berlinHbfTrain)
 	t.ok(!!journey, 'journey')
 	for (const leg of journey.legs) {
 		t.ok(leg.mode === 'train', 'leg mode')
@@ -142,15 +145,11 @@ tape('flix.journeys train only, opt.departureAfter', async t => {
 })
 
 tape('flix.journeys opt.results', async t => {
-	const berlin = { id: '88', type: 'region' }
-	const stuttgart = { id: '101', type: 'region' }
-
 	const journeys = await flix.journeys(berlin, stuttgart, { when, results: 2 })
 	t.ok(journeys.length === 2, 'number of journeys')
 })
 
 tape('flix.journeys opt.transfers', async t => {
-	const berlin = { id: '88', type: 'region' }
 	const rome = { id: '2075', type: 'region' }
 
 	const journeysWithoutTransfer = await flix.journeys(berlin, rome, { when, transfers: 0 })
@@ -166,10 +165,10 @@ tape('flix.journeys opt.interval', async t => {
 	const strasbourg = '23'
 
 	const journeysWithoutInterval = await flix.journeys(berlin, strasbourg, { when, transfers: 0 })
-	t.ok(journeysWithoutInterval.length === 1, 'number of journeys')
 	for (const journey of journeysWithoutInterval) t.doesNotThrow(() => validate(journey), 'valid fptf')
 
 	const journeysWithInterval = await flix.journeys(berlin, strasbourg, { when, transfers: 0, interval: 3 * 24 * 60 })
-	t.ok(journeysWithInterval.length === 3, 'number of journeys')
 	for (const journey of journeysWithInterval) t.doesNotThrow(() => validate(journey), 'valid fptf')
+
+	t.ok(journeysWithInterval.length > journeysWithoutInterval.length, 'number of journeys')
 })
