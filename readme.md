@@ -327,6 +327,77 @@ await flix.departures(berlinZOB)
 }
 ```
 
+---
+
+### `trip(tripId, [opt])`
+
+Fetch a trip, a specific vehicle travelling to stations at specific points in time.
+
+#### Supported Options
+
+Attribute | Description | Value type | Default
+----------|-------------|------------|--------
+`apiKey` | Custom Flix API key | `String` | *default api key*
+
+#### Example
+
+```js
+const [dep] = await flix.departures({ type: 'station', id: '1' })
+await flix.trip(dep.tripId)
+```
+
+```js
+{
+    id: 'direct:97649761:1224:36',
+    tripType: 'direct',
+    direction: 'Route 070 direction Hamburg ZOB',
+    lineName: '070',
+    operator: {
+        type: 'operator',
+        id: 'busart-tours-gmbh',
+        name: 'BusArt Tours GmbH',
+        url: null,
+        address: 'Albrechtstraße. 138-140 12099 Berlin'
+    },
+
+    cancelled: true,
+    realtimeDataUpdatedAt: null,
+    stopovers: [
+        {
+            station: {
+                type: 'station',
+                id: '1224',
+                name: 'Berlin Alexanderplatz',
+                // …
+            },
+            cancelled: false,
+            arrival: null,
+            plannedArrival: null,
+            arrivalDelay: null,
+            departure: null,
+            plannedDeparture: '2020-04-15T15:00:00+02:00',
+            departureDelay: null,
+        },
+        {
+            station: {
+                type: 'station',
+                id: '36',
+                name: 'Hamburg ZOB',
+                // …
+            },
+            cancelled: false,
+            arrival: '2020-04-15T18:35:00+02:00',
+            plannedArrival: '2020-04-15T18:30:00+02:00',
+            arrivalDelay: 300,
+            departure: null,
+            plannedDeparture: null,
+            departureDelay: null,
+        }
+    ],
+    hasTracker: false,
+}
+```
+
 ## Similar Projects
 
 - [search-flix-locations](https://github.com/derhuerst/search-flix-locations/) - Search for FlixBus (Meinfernbus) / FlixTrain cities & stations.

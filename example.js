@@ -29,6 +29,9 @@ const find = (name, stream) => {
 
 	const [depAtAlexanderplatz] = await flix.departures(berlinAlexanderplatz)
 	console.error(depAtAlexanderplatz)
+
+	const trip = await flix.trip(depAtAlexanderplatz.tripId)
+	console.error(trip)
 })()
 	.catch((err) => {
 		console.error(err)
