@@ -32,6 +32,12 @@ const find = (name, stream) => {
 
 	const trip = await flix.trip(depAtAlexanderplatz.tripId)
 	console.error(trip)
+
+	const bookingNr = process.env.BOOKING_NR
+	const nameOrEmail = process.env.NAME_OR_EMAIL
+	if (bookingNr && nameOrEmail) {
+		console.log(await flix.order(bookingNr, nameOrEmail))
+	}
 })()
 	.catch((err) => {
 		console.error(err)
