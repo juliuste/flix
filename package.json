@@ -59,7 +59,7 @@
 		"fpti-tests": "^0.0.0",
 		"get-stream": "^5.1.0",
 		"is-url-superb": "^3.0.0",
-		"tape": "^4.11.0",
+		"tape": "^5.0.0",
 		"tape-promise": "^4.0.0",
 		"validate-fptf": "^3.0.0"
 	},
