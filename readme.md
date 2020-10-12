@@ -6,7 +6,6 @@ This module conforms to the [FPTI-JS `0.3.2` standard](https://github.com/public
 
 [![npm version](https://img.shields.io/npm/v/flix.svg)](https://www.npmjs.com/package/flix)
 [![Build Status](https://travis-ci.org/juliuste/flix.svg?branch=master)](https://travis-ci.org/juliuste/flix)
-[![Greenkeeper badge](https://badges.greenkeeper.io/juliuste/flix.svg)](https://greenkeeper.io/)
 [![license](https://img.shields.io/github/license/juliuste/flix.svg?style=flat)](LICENSE)
 [![fpti-js version](https://fpti-js.badges.juliustens.eu/badge/juliuste/flix)](https://fpti-js.badges.juliustens.eu/link/juliuste/flix)
 [![chat on gitter](https://badges.gitter.im/public-transport.svg)](https://gitter.im/public-transport)
