@@ -27,10 +27,10 @@
 	"repository": "juliuste/flix",
 	"license": "ISC",
 	"author": "Julius Tens <mail@juliustens.eu>",
+	"main": "lib/index.js",
 	"files": [
 		"lib/*"
 	],
-	"main": "lib/index.js",
 	"scripts": {
 		"check-deps": "depcheck",
 		"fix": "eslint --fix lib test.js",
