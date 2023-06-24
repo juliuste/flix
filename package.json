@@ -39,6 +39,7 @@
 		"test": "npm run lint && npm run check-deps && node test"
 	},
 	"dependencies": {
+		"debug": "^4.1.1",
 		"fetch-ponyfill": "^6.1.1",
 		"fpti-util": "^0.1.0",
 		"into-stream": "^6.0.0",
