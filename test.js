@@ -19,6 +19,7 @@ const when = new Date('2020-07-01T08:00+02:00')
 
 const berlin = { type: 'region', id: '88' }
 const stuttgart = { type: 'region', id: '101' }
+const berlinAlexanderplatz = { type: 'station', id: '1224' }
 
 const isStationThatBeginsWith = (s, beginsWith) => (s.type === 'station' && s.name.substr(0, beginsWith.length) === beginsWith)
 
@@ -171,4 +172,53 @@ tape('flix.journeys opt.interval', async t => {
 	for (const journey of journeysWithInterval) t.doesNotThrow(() => validate(journey), 'valid fptf')
 
 	t.ok(journeysWithInterval.length > journeysWithoutInterval.length, 'number of journeys')
+})
+
+const nonEmptyStr = (t, val, name) => {
+	t.equal(typeof val, 'string', name + ' is not a string')
+	t.ok(val, name + ' is empty')
+}
+
+tape('flix.departuresToday', async t => {
+	const deps = await flix.departuresToday(berlinAlexanderplatz)
+	t.ok(deps.length >= 1, 'at least 1 departure')
+
+	deps.forEach((dep, i) => {
+		const n = `deps[${i}].`
+
+		nonEmptyStr(t, dep.tripId, n + 'tripId')
+		validate(dep.when, ['when'], n + '.when')
+		t.equal(typeof dep.cancelled, 'boolean', n + '.cancelled is not a boolean')
+		nonEmptyStr(t, dep.direction, n + 'direction')
+		nonEmptyStr(t, dep.lineName, n + 'lineName')
+		dep.route.forEach((station, i) => {
+			validate(station, ['station'], `${n}.route[${i}]`)
+		})
+		nonEmptyStr(t, dep.routeAbbreviation, n + 'routeAbbreviation')
+		if (dep.hasTracker !== null) {
+			t.equal(typeof dep.hasTracker, 'boolean', n + '.hasTracker is not a boolean')
+		}
+	})
+})
+
+tape('flix.arrivalsToday', async t => {
+	const arrs = await flix.arrivalsToday(berlinAlexanderplatz)
+	t.ok(arrs.length >= 1, 'at least 1 arrarture')
+
+	arrs.forEach((arr, i) => {
+		const n = `arrs[${i}].`
+
+		nonEmptyStr(t, arr.tripId, n + 'tripId')
+		validate(arr.when, ['when'], n + '.when')
+		t.equal(typeof arr.cancelled, 'boolean', n + '.cancelled is not a boolean')
+		nonEmptyStr(t, arr.direction, n + 'direction')
+		nonEmptyStr(t, arr.lineName, n + 'lineName')
+		arr.route.forEach((station, i) => {
+			validate(station, ['station'], `${n}.route[${i}]`)
+		})
+		nonEmptyStr(t, arr.routeAbbreviation, n + 'routeAbbreviation')
+		if (arr.hasTracker !== null) {
+			t.equal(typeof arr.hasTracker, 'boolean', n + '.hasTracker is not a boolean')
+		}
+	})
 })

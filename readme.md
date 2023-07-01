@@ -252,6 +252,81 @@ flix.journeys(berlin, hamburg, { when: new Date('2019-06-27T05:00:00+0200'), tra
 }
 ```
 
+---
+
+### `departures(station, [opt])`
+
+Fetch departures at a station.
+
+#### Supported Options
+
+Attribute | Description | Value type | Default
+----------|-------------|------------|--------
+`when` | alias for `departureAfter` | [`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/date) | `new Date()`
+`departureAfter` | List departures after this date/time | [`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/date) | `new Date()`
+`apiKey` | Custom Flix API key | `String` | *default api key*
+
+#### Example
+
+```js
+const berlinZOB = '1' // station id
+await flix.departures(berlinZOB)
+```
+
+```js
+{
+    tripId: 'direct:92529561:1224:2186',
+    when: '2020-04-15T01:25:00+02:00',
+    cancelled: true,
+    direction: 'Copenhagen',
+    lineName: 'N232',
+    stop: {
+        type: 'station',
+        id: '1224',
+        name: 'Berlin Alexanderplatz',
+        location: {
+            type: 'location',
+            longitude: 13.414529,
+            latitude: 52.523198,
+            address: 'Alexanderstraße 3, 10178 Berlin, Deutschland',
+            street: 'Alexanderstraße 3'
+        },
+        importance: null
+    },
+    routeAbbreviation: 'Berlin Alexanderplatz → Berlin central bus station → Berlin Alt-Tegel → Rostock central bus station → Copenhagen',
+    route: [
+        {
+            type: 'station',
+            id: '1224',
+            name: 'Berlin Alexanderplatz',
+            location: {
+                type: 'location',
+                longitude: 13.414529,
+                latitude: 52.523198,
+                address: 'Alexanderstraße 3, 10178 Berlin, Germany',
+                street: 'Alexanderstraße 3'
+            },
+            importance: null
+        },
+        // …
+        {
+            type: 'station',
+            id: '2186',
+            name: 'Copenhagen',
+            location: {
+                type: 'location',
+                longitude: 12.565466,
+                latitude: 55.670153,
+                address: 'Ingerslevsgade, 1704 Kopenhagen, Denmark',
+                street: 'Ingerslevsgade'
+            },
+            importance: null
+        }
+    ],
+    hasTracker: false
+}
+```
+
 ## Similar Projects
 
 - [search-flix-locations](https://github.com/derhuerst/search-flix-locations/) - Search for FlixBus (Meinfernbus) / FlixTrain cities & stations.
